@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TECHMINDS TECHNOLOGIES</title>
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+    />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <input type="checkbox" id="nav-toggle" />
+    <div class="sidebar">
+      <div class="sidebar-brand">
+        <h2>
+          <span class="las la-chart-bar"></span
+          ><span> Business Intelligence</span>
+        </h2>
+      </div>
+      <div class="sidebar-menu">
+        <ul>
+          <li>
+            <a href="index.html"
+              ><span class="las la-igloo"></span><span>Dashboard</span></a
+            >
+          </li>
+          <li>
+            <a href="users.html"
+              ><span class="las la-users"></span><span>Users</span></a
+            >
+          </li>
+          <li>
+            <a href="drivers.html"
+              ><span class="las la-id-card"></span><span>Drivers</span></a
+            >
+          </li>
+          <li>
+            <a href="vehicles.html"
+              ><span class="las la-car"></span><span>Vehicles</span></a
+            >
+          </li>
+          <li>
+            <a href="jmp.html"
+              ><span class="las la-receipt"></span
+              ><span>Journey Management</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-content">
+      <header>
+        <h2>
+          <label for="nav-toggle">
+            <span class="las la-bars"></span>
+          </label>
+          Drivers
+        </h2>
+        <div class="search-wrapper">
+          <span class="las la-search"></span>
+          <input type="" placeholder="Search here..." />
+        </div>
+        <div class="user=wrapper">
+          <span class="las la-user"></span>
+          <div>
+            <h4>John Doe</h4>
+            <small>Super admin</small>
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="button">
+          <a href="jmp.html"><button>Back</button></a>
+        </div>
+        <div class="container">
+            <form action="#">
+                <div class="form first">
+                    <div class="details personal">
+                        <span class="title">Driver's and Vehicle details</span>
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>DATE</label>
+                                <input type="date" placeholder="Enter JMP date" required>
+                            </div>
+                            <div class="input-field">
+                                <label>NAME</label>
+                                <select required>
+                                    <option disabled selected>Select drivers name</option>
+                                    <option>Daniel Rotich</option>
+                                    <option>Alex Maina</option>
+                                    <option>Kennedy Kitingo</option>
+                                </select>
+                            </div>
+                            <div class="input-field">
+                                <label>VEHICLE</label>
+                                <select required>
+                                    <option disabled selected>Select vehicle</option>
+                                    <option>KDC 687D</option>
+                                    <option>KCN 907M</option>
+                                    <option>KCN 188K</option>
+                                </select>
+                                </div>
+                            <div class="input-field">
+                                <label>START</label>
+                                <input type="text" placeholder="Enter start odometer reading" required>
+                            </div>
+                            <div class="input-field">
+                                <label>STOP</label>
+                                <input type="text" placeholder="Enter stop odometer reading" required>
+                            </div>
+                            <div class="input-field">
+                                <label>VEHICLE CONDITION</label>
+                                <select required>
+                                    <option disabled selected>Select vehicle condition</option>
+                                    <option>Good</option>
+                                    <option>Fair</option>
+                                    <option>Bad</option>
+                                </select>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="details ID">
+                        <span class="title">JMP</span>
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>INITIAL JMP</label>
+                                <input type="time" placeholder="Enter initial jmp" required>
+                            </div>
+                            <div class="input-field">
+                                <label>FINAL JMP</label>
+                                <input type="time" placeholder="Enter final jmp" required>
+                            </div>
+                            <div class="input-field">
+                                <label>ROUND TRIP DISTANCE</label>
+                                <input type="text" placeholder="Enter round trip distance" required>
+                            </div>     
+                            <div class="input-field">
+                                <label>START TRIP</label>
+                                <input type="text" placeholder="Enter your start trip" required>
+                            </div>
+                            <div class="input-field">
+                                <label>DESTINATION</label>
+                                <input type="text" placeholder="Enter destination" required>
+                            </div>
+                            <div class="input-field">
+                                <label>STOP TRIP</label>
+                                <input type="text" placeholder="Enter destination" required>
+                            </div>
+                        </div>        
+                        <button class="nextBtn">
+                            <span class="btnText">NEXT</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div> 
+                </div>             
+            <div class="form second">
+                <div class="details address">
+                    <span class="title">APPROVAL DETAILS AND PASSENGER DETAILS</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>TRIP APPROVED</label>
+                            <input type="text" placeholder="Enter trip approved" required>
+                        </div>
+                        <div class="input-field">
+                            <label>PASSENGERS</label>
+                            <input type="text" placeholder="Enter passenger names" required>
+                        </div>
+                    </div>
+                </div>
+                    <div class="buttons">
+                        <div class="backBtn">
+                            <i class="uil uil-navigator"></i>
+                            <span class="btnText">Back</span>
+                        </div>
+                        <button class="sumbit">
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+        </form>
+    </div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
