@@ -196,21 +196,24 @@ main {
 
 /*********** FORMS**********/
 .container {
-  position: relative;
-  max-width: 900px;
+  position: fixed;
+  max-width: 1100px;
   width: 100%;
   border-radius: 6px;
   padding: 30px;
   margin: 0 15px;
+  width: 72%;
+  height: 72%;
+  scroll-behavior: smooth;
   background-color: #fff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 .container form {
   position: relative;
   margin-top: 16px;
-  min-height: 490px;
+  min-height: 480px;
   background-color: #fff;
-  overflow: hidden;
+  overflow: auto;
 }
 .container form .form {
   position: absolute;
@@ -253,7 +256,7 @@ form.secActive .form.first {
 }
 form .fields .input-field {
   display: flex;
-  width: calc(100% / 3 - 15px);
+  width: calc(100% / 2 - 4px);
   flex-direction: column;
   margin: 4px 0;
 }
