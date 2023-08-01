@@ -17,7 +17,10 @@ class Vehicle(models.Model):
     Plate_no=models.CharField(max_length=20)
     Insuarance_start_date=models.DateField()
     Insuarance_expiry_date=models.DateField()
-    Distane_remaining=models.IntegerField(default=100000)
+    last_inspection_date=models.DateField()
+    next_inspection_date=models.DateField()
+    last_service_distance=models.IntegerField() 
+    Distance_remaining=models.IntegerField(default=100000)
     odometer=models.IntegerField(default=0)
     def __str__(self):
         return self.Plate_no
