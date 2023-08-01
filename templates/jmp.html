@@ -22,33 +22,33 @@
       <div class="sidebar-menu">
         <ul>
           <li>
-            <a href="index.html"
+            <a href="{% url "dashboard"%}"
               ><span class="las la-igloo"></span><span>Dashboard</span></a
             >
           </li>
           <li>
-            <a href="users.html"
+            <a href="http://127.0.0.1:8000/admin/auth/user/"
               ><span class="las la-users"></span><span>Users</span></a
             >
           </li>
           <li>
-            <a href="drivers.html"
+            <a href="http://127.0.0.1:8000/admin/vehicle_app/driver/"
               ><span class="las la-id-card"></span><span>Drivers</span></a
             >
           </li>
           <li>
-            <a href="vehicles.html"
+            <a href="http://127.0.0.1:8000/admin/vehicle_app/vehicle/"
               ><span class="las la-car"></span><span>Vehicles</span></a
             >
           </li>
           <li>
-            <a href="jmp.html"
+            <a href="{% url "journey"%}"
               ><span class="las la-receipt"></span
               ><span>Journey Management</span></a
             >
           </li>
           <li>
-            <a href="vehiclemanagement.html"
+            <a href="{% url "vehicle" %}"
               ><span class="las la-clipboard-check"></span
               ><span>Vehicle Management</span></a
             >

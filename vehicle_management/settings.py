@@ -26,11 +26,13 @@ SECRET_KEY = 'django-insecure-*x-%%je4ph35nyjju6%$j294@21$_25+y+-5a+_8%bb!==+*q+
 DEBUG = True
 
 ALLOWED_HOSTS = []
+LOGIN_URL = "login"
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'vehicle_app.apps.VehicleAppConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,7 +56,7 @@ ROOT_URLCONF = 'vehicle_management.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,6 +118,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR/"static",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
