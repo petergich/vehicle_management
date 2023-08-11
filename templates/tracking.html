@@ -48,13 +48,13 @@
               >
             </li>
           <li>
-            <a href="{% url "journey"%}"
+            <a href="{% url 'journey' %}"
               ><span class="las la-receipt"></span
               ><span>Journey Management</span></a
             >
           </li>
           <li>
-            <a href="{% url "vehicle"%}"
+            <a href="{% url 'vehicle' %}"
               ><span class="las la-clipboard-check"></span
               ><span>Vehicle Management</span></a
             >
@@ -80,7 +80,7 @@
           <label for="nav-toggle">
             <span class="las la-bars"></span>
           </label>
-          Vehicle Management
+          Add tracking 
         </h2>
         <div class="search-wrapper">
           <span class="las la-search"></span>
@@ -95,45 +95,64 @@
         </div>
       </header>
       <main>
-        <div class="container2">
-          <table class="content-table"> 
-            <thead>        
-            <tr>
-              <th>VEHICLE</th>
-              <th>VEHICLE TYPE</th>
-              <th>OWNER</th>
-              <th>EMAIL</th>
-              <th>TELEPHONE</th>
-              <th>INSUARANCE START DATE</th>
-              <th>INSUARANCE EXPIRY DATE</th>
-              <th>LAST INSPECTION DATE</th>
-              <th>LAST SERVICE DISTANCE</th>
-              <th>DISTANCE REMAINING</th>
-              <th>ODOMETER READING</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for item in vehicles %}
-            <tr>
-              <td>{{ item.Plate_no }}</td>
-              <td>{{ item.vehicle_type }}</td>
-              <td>{{ item.owner }}</td>
-              <td>{{ item.email }}</td>
-              <td>{{ item.telephone }}</td>
-              <td>{{ item.Insuarance_start_date}}</td>
-              <td>{{ item.Insuarance_expiry_date }}</td>
-              <td>{{ item.last_inspection_date }}</td>
-              <td>{{ item.next_inspection_date }}</td>
-              <td>{{ item.last_service_distance }}</td>
-              <td>{{ item.Distance_remaining }}</td>
-              <td>{{ item.Odometer }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-          </table>
-        </div>    
+        <div class="button">
+          <a href="http://127.0.0.1:8000/admin/vehicle_app/tracking/">
+          <button>VIEW TRACKING</button>
+        </a>
         </div>
+        <br />
+        <div class="container">
+            <form action="tracking" method="post">
+              {% csrf_token %}
+                <div class="form first">
+                    <div class="details personal">
+                        <span class="title">Vehicle tracking Details</span>
+                        <div class="fields">
+                          <div class="input-field">
+                            <label>VEHICLE</label>
+                            <select required name="vehicle">
+                                <option disabled selected>Select vehicle</option>
+                                {%for vehicle in vehicles%}
+                                <option>{{vehicle.Plate_no}}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+                        <div class="input-field">
+                          <label>DRIVER</label>
+                          <select required name="driver">
+                              <option disabled selected>Select Driver</option>
+                              {%for driver in drivers%}
+                              <option>{{driver.name}}</option>
+                              {%endfor%}
+                          </select>
+                      </div>
+                            <div class="input-field">
+                                <label>DATE</label>
+                                <input type="date" name="date" placeholder="Enter fueling date" required>
+                            </div>
+                            <div class="input-field">
+                                <label>DAILY VEHICLE TRACKING DISTANCE</label>
+                                <input type="number" name="distance" placeholder="Enter vehicle tracking distance" required>
+                            </div>
+                            <div class="input-field">
+                              <label>OVERSPEEDING</label>
+                              <input type="text" name="speeding" placeholder="Enter overspeeding" required>
+                          </div>
+                          <div class="input-field">
+                            <label>JMP DAILY DISTANCE</label>
+                            <input type="number" name="jmpdistance" placeholder="Enter jmp daily distance" required>
+                        </div>
+                        <button class="sumbit">
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+        </form>
+    </div>
       </main>
     </div>
+    <script src="../static/script.js"></script>
   </body>
 </html>

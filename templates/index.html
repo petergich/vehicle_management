@@ -16,7 +16,7 @@
       <div class="sidebar-brand">
         <h2>
           <span class="las la-chart-bar"></span
-          ><span> Business Intelligence</span>
+          ><span>TECHMINDS VMS</span>
         </h2>
       </div>
       <div class="sidebar-menu">
@@ -42,6 +42,12 @@
             >
           </li>
           <li>
+            <a href="http://127.0.0.1:8000/admin/vehicle_app/aprover/"
+                ><span class="las la-thumbs-up"></span
+                ><span>Approvers</span></a
+              >
+            </li>
+          <li>
             <a href="{% url 'journey'%}"
               ><span class="las la-receipt"></span
               ><span>Journey Management</span></a
@@ -53,6 +59,18 @@
               ><span>Vehicle Management</span></a
             >
           </li>
+          <li>
+            <a href="{% url "fuel" %}"
+                ><span class="las la-gas-pump"></span
+                ><span>Fuels</span></a
+              >
+            </li>
+          <li>
+            <a href="{% url "tracking" %}"
+                ><span class="las la-chart-line"></span
+                ><span>Tracking</span></a
+              >
+            </li> 
         </ul>
       </div>
     </div>
@@ -72,7 +90,7 @@
           <span class="las la-user"></span>
           <div>
             <h4>John Doe</h4>
-            <small>Super admin</small>
+            <small>Super Admin</small>
           </div>
         </div>
       </header>
@@ -80,17 +98,8 @@
         <div class="cards">
           <div class="card-single">
             <div>
-              <h1>10</h1>
-              <span>Users</span>
-            </div>
-            <div>
-              <span class="las la-users"></span>
-            </div>
-          </div>
-          <div class="card-single">
-            <div>
               <h1>20</h1>
-              <span>Drivers</span>
+              <span><a href="">Drivers</a></span>
             </div>
             <div>
               <span class="las la-id-card"></span>
@@ -99,7 +108,7 @@
           <div class="card-single">
             <div>
               <h1>15</h1>
-              <span>Vehicles</span>
+              <span><a href="">Vehicles</a></span>
             </div>
             <div>
               <span class="las la-car"></span>
@@ -108,7 +117,7 @@
           <div class="card-single">
             <div>
               <h1>100</h1>
-              <span>Journey Management</span>
+              <span><a href="">Journey Management</a></span>
             </div>
             <div>
               <span class="las la-receipt"></span>

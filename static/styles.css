@@ -27,6 +27,10 @@
   padding: 1rem 0rem 1rem 2rem;
   color: #fff;
 }
+.sidebar-brand span {
+  display: inline-block;
+  padding-right: 1rem;
+}
 .sidebar-menu {
   margin-top: 1rem;
 }
@@ -140,7 +144,7 @@ main {
 }
 .cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 2rem;
   margin-top: 1rem;
 }
@@ -151,8 +155,15 @@ main {
   padding: 2rem;
   border-radius: 2px;
 }
+.cards .card-single span a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: medium;
+}
 .card-single div:last-child span {
   font-size: 3rem;
+  color: #fff;
   color: var(--main-color);
 }
 .card-single span:first-child span {
@@ -256,7 +267,7 @@ form.secActive .form.first {
 }
 form .fields .input-field {
   display: flex;
-  width: calc(100% / 2 - 4px);
+  width: calc(100% / 3 - 15px);
   flex-direction: column;
   margin: 4px 0;
 }
@@ -343,35 +354,48 @@ form .buttons button,
 /********************************* Container to show details input details *************/
 .container2 {
   position: fixed;
-  max-width: 1100px;
-  width: 100%;
-  border-radius: 6px;
-  padding: 30px;
-  margin: 0 15px;
-  width: 72%;
-  height: 72%;
+  max-width: 2000px;
+  border-radius: 3px;
+  padding: 15px;
+  margin: 0 5px;
   scroll-behavior: smooth;
   background-color: #fff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  overflow: scroll;
+  height: 72%;
 }
-.container2 table {
+/******** Table Output ********/
+
+.content-table {
   border-collapse: collapse;
-  width: 100%;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
-.container2 table th {
+.content-table thead tr {
   background-color: var(--main-color);
-  border: 1px solid black;
-  padding: 8px;
-  text-align: left;
   color: #fff;
+  text-align: left;
+  font-weight: bold;
 }
-.container2 table tr {
-  border: 1px solid black;
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
 }
-.container2 table td {
-  background-origin: 1px solid black;
-  padding: 8px;
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
 }
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid var(--main-color);
+}
+
 /*******RESPONSIVE *********/
 
 @media only screen and (max-width: 960px) {

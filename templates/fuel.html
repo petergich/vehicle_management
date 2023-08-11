@@ -42,13 +42,12 @@
             >
           </li>
           <li>
-            <li>
-              <a href="http://127.0.0.1:8000/admin/vehicle_app/aprover/"
-                  ><span class="las la-thumbs-up"></span
-                  ><span>Approvers</span></a
-                >
-              </li>
-              <li>
+            <a href="http://127.0.0.1:8000/admin/vehicle_app/aprover/"
+                ><span class="las la-thumbs-up"></span
+                ><span>Approvers</span></a
+              >
+            </li>
+          <li>
             <a href="{% url 'journey' %}"
               ><span class="las la-receipt"></span
               ><span>Journey Management</span></a
@@ -75,14 +74,13 @@
         </ul>
       </div>
     </div>
-   
     <div class="main-content">
       <header>
         <h2>
           <label for="nav-toggle">
             <span class="las la-bars"></span>
           </label>
-          Add JMP
+          Add fueling 
         </h2>
         <div class="search-wrapper">
           <span class="las la-search"></span>
@@ -98,88 +96,54 @@
       </header>
       <main>
         <div class="button">
-          <a href="http://127.0.0.1:8000/admin/vehicle_app/journey/">
-          <button>VIEW JMPS</button>
+          <a href="http://127.0.0.1:8000/admin/vehicle_app/fuel/">
+          <button>VIEW FUELING</button>
         </a>
         </div>
-        <br/>
+        <br />
         <div class="container">
-            <form action="journey" method="post">
+            <form action="fuel" method="post">
               {% csrf_token %}
                 <div class="form first">
                     <div class="details personal">
-                        <span class="title">Driver's and Vehicle details</span>
+                        <span class="title">Fueling Details</span>
                         <div class="fields">
                             <div class="input-field">
                                 <label>DATE</label>
-                                <input type="date" name="date" placeholder="Enter JMP date" required>
-                            </div>
-                            <div class="input-field">
-                                <label>NAME</label>
-                                <select required name="nam">
-                                    <option disabled selected>Select drivers name</option>
-                                    {%for driver in drivers%}
-                                    <option>{{ driver.name }}</option>
-                                    {%endfor%}
-                                </select>
+                                <input type="date" name="date" placeholder="Enter fueling date" required>
                             </div>
                             <div class="input-field">
                                 <label>VEHICLE</label>
                                 <select required name="vehicle">
                                     <option disabled selected>Select vehicle</option>
                                     {%for vehicle in vehicles%}
-                                    <option>{{ vehicle.Plate_no }}</option>
+                                    <option>{{ vehicle.Plate_no}}</option>
                                     {%endfor%}
                                 </select>
                             </div>
                             <div class="input-field">
-                                <label>STOP ODOMETER</label>
-                                <input type="number" name="stop" placeholder="Enter stop odometer reading" required>
+                                <label>DRIVER</label>
+                                <select required name="driver">
+                                    <option disabled selected>Select driver</option>
+                                    {%for driver in drivers%}
+                                    <option>{{ driver.name }}</option>
+                                    {%endfor%}
+                                </select>
                             </div>
                             <div class="input-field">
-                                <label>VEHICLE CONDITION</label>
-                                <input type="text" name="vehicle_condition" placeholder="Enter vehicle condition" required>
-                                </div>
+                                <label>CURRENT ODOMETER READING</label>
+                                <input type="number" name="current_odometer_reading" placeholder="Enter current odometer reading" required>
+                            </div>
+                            <div class="input-field">
+                                <label>LITERS TAKEN</label>
+                                <input type="number" name="liters_taken" placeholder="Enter liters taken" required>
+                            </div>
+                            <div class="input-field">
+                                <label>COST</label>
+                                <input type="number" name="cost" placeholder="Enter cost" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="details ID">
-                        <span class="title">JMP</span>
-                        <div class="fields">
-                            <div class="input-field">
-                                <label>INITIAL JMP</label>
-                                <input type="time" name="initial_jmp" placeholder="Enter initial jmp" required>
-                            </div>
-                            <div class="input-field">
-                                <label>FINAL JMP</label>
-                                <input type="time" name="final_jmp" placeholder="Enter final jmp" required>
-                            </div>     
-                            <div class="input-field">
-                                <label>START TRIP</label>
-                                <input type="text" name="start_trip" placeholder="Enter your start trip" required>
-                            </div>
-                            <div class="input-field">
-                                <label>DESTINATION</label>
-                                <input type="text" name="destination" placeholder="Enter destination" required>
-                            </div>
-                            <div class="input-field">
-                                <label>STOP TRIP</label>
-                                <input type="text" name="stop_trip" placeholder="Enter destination" required>
-                            </div>
-                            <div class="input-field">
-                              <label>TRIP APPROVED</label>
-                              <select required name="trip_approved">
-                                <option disabled selected>Select Approver</option>
-                                {%for aprover in aprovers%}
-                                <option>{{ aprover.name }}</option>
-                                {%endfor%}
-                            </select>
-                          </div>
-                          <div class="input-field">
-                              <label>PASSENGERS</label>
-                              <input type="text" name="passengers" placeholder="Enter passenger names"></input>
-                          </div>
-                      </div>
-                        </div>        
+                    </div> 
                         <button class="sumbit">
                             <span class="btnText">Submit</span>
                             <i class="uil uil-navigator"></i>
@@ -194,7 +158,7 @@
     {% if message %}
     <script>
       alert("{{message}}")
-      url="journey"
+      url="fuel"
       window.location.href= url;
     </script>
     {% endif %}
