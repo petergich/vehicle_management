@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 :root {
-  --main-color: #0e446e;
+  --main-color: #011825;
   --color-dark: #1d2231;
   --text-grey: #8390a2;
 }
@@ -27,10 +27,6 @@
   padding: 1rem 0rem 1rem 2rem;
   color: #fff;
 }
-.sidebar-brand span {
-  display: inline-block;
-  padding-right: 1rem;
-}
 .sidebar-menu {
   margin-top: 1rem;
 }
@@ -56,10 +52,30 @@
   font-size: 1.5rem;
   padding-right: 1rem;
 }
+/******LOGOUT STYLING********/
+.bottom-menu {
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.bottom-menu li {
+  display: block;
+  padding: 10px 20px;
+  background-color: var(--main-color);
+}
+
+.bottom-menu li a {
+  text-decoration: none;
+  color: #fff;
+}
 #nav-toggle:checked + .sidebar {
   width: 70px;
 }
-#nav-toggle:checked + .sidebar .sidebar-brand,
+#nav-toggle:checked + .sidebar .sidebar-brand {
+  display: none;
+}
 #nav-toggle:checked + .sidebar .sidebar li {
   padding-left: 1rem;
   text-align: center;
@@ -78,6 +94,9 @@
   width: calc(100% - 70px);
   left: 70px;
 }
+#nav-toggle {
+  display: none;
+}
 .main-content {
   transition: margin-left 300ms;
   margin-left: 345px;
@@ -94,9 +113,6 @@ header {
   top: 0;
   z-index: 100;
   transition: width 300ms;
-}
-#nav-toggle {
-  display: none;
 }
 header h2 {
   color: #222;
@@ -157,28 +173,45 @@ main {
 }
 .cards .card-single span a {
   text-decoration: none;
-  color: black;
-  font-weight: bold;
+  color: #fff;
+  font-weight: bolder;
   font-size: medium;
+}
+.cards .card-single:nth-child(1) h1,
+.cards .card-single:nth-child(2) h1,
+.cards .card-single:nth-child(3) h1,
+.cards .card-single:nth-child(1) span a,
+.cards .card-single:nth-child(2) span a,
+.cards .card-single:nth-child(3) span a {
+  color: var(--main-color);
 }
 .card-single div:last-child span {
   font-size: 3rem;
-  color: #fff;
   color: var(--main-color);
 }
 .card-single span:first-child span {
-  color: var(--text-grey);
+  color: var(--main-color);
 }
-.card-single:last-child {
-  background: var(--main-color);
-}
-.card-single:last-child h1,
-.card-single:last-child div:first-child span,
-.card-single:last-child div:last-child span {
-  color: #fff;
+.card-single span:last-child span {
+  color: var(--main-color);
 }
 .card-single:last-child div:first-child span {
   color: #fff;
+}
+.card-single:hover {
+  background-color: var(--main-color);
+}
+.cards .card-single:hover:nth-child(1) h1,
+.cards .card-single:hover:nth-child(2) h1,
+.cards .card-single:hover:nth-child(3) h1,
+.cards .card-single:hover:nth-child(1) span a,
+.cards .card-single:hover:nth-child(2) span a,
+.cards .card-single:hover:nth-child(3) span a {
+  color: white;
+}
+.cards .card-single:hover div:last-child span {
+  font-size: 3rem;
+  color: white;
 }
 @media only screen and (max-width: 1200px) {
   .sidebar {
@@ -208,7 +241,7 @@ main {
 /*********** FORMS**********/
 .container {
   position: fixed;
-  max-width: 1100px;
+  max-width: 1200px;
   width: 100%;
   border-radius: 6px;
   padding: 30px;
@@ -266,12 +299,23 @@ form.secActive .form.first {
   flex-wrap: wrap;
 }
 form .fields .input-field {
-  display: flex;
+  display: grid;
   width: calc(100% / 3 - 15px);
   flex-direction: column;
   margin: 4px 0;
 }
+form .fields .input-fields {
+  display: grid;
+  width: calc(100%);
+  flex-direction: column;
+  margin: 4px 0;
+}
 .input-field label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #2e2e2e;
+}
+.input-fields label {
   font-size: 12px;
   font-weight: 500;
   color: #2e2e2e;
@@ -288,11 +332,30 @@ select {
   height: 42px;
   margin: 8px 0;
 }
-.input-field input :focus,
-.input-field select:focus {
+.input-fields input :focus,
+.input-fields select:focus {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
 }
-.input-field input[type="date"]:valid {
+.input-fields input[type="date"]:valid {
+  color: #333;
+}
+.input-fields input,
+select {
+  outline: none;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  padding: 0 15px;
+  height: 42px;
+  margin: 8px 0;
+}
+.input-fields input :focus,
+.input-fields select:focus {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+}
+.input-fields input[type="date"]:valid {
   color: #333;
 }
 .container form button,
@@ -395,7 +458,23 @@ form .buttons button,
 .content-table tbody tr:last-of-type {
   border-bottom: 2px solid var(--main-color);
 }
-
+/******** CHARTS STARTS HERE ***********/
+.charts{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 20px;
+  width: 100%;
+  padding: 20px;
+  padding-top: 0;
+}
+.chart{
+  background: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  width: 100%;
+}
 /*******RESPONSIVE *********/
 
 @media only screen and (max-width: 960px) {

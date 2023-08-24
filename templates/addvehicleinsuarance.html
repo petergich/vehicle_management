@@ -41,19 +41,20 @@
             >
           </li>
           <li>
-            <a href="http://127.0.0.1:8000/admin/vehicle_app/aprover/"
-                ><span class="las la-thumbs-up"></span
-                ><span>Approvers</span></a
-              >
-            </li>
-          <li>
-            <a href="{% url "journey"%}"
+            <li>
+              <a href="http://127.0.0.1:8000/admin/vehicle_app/aprover/"
+                  ><span class="las la-thumbs-up"></span
+                  ><span>Approvers</span></a
+                >
+              </li>
+              <li>
+            <a href="{% url 'journey' %}"
               ><span class="las la-receipt"></span
               ><span>Journey Management</span></a
             >
           </li>
           <li>
-            <a href="{% url "vehicle"%}"
+            <a href="{% url 'vehicle' %}"
               ><span class="las la-clipboard-check"></span
               ><span>Vehicle Management</span></a
             >
@@ -80,13 +81,14 @@
       </ul>
       </div>
     </div>
+   
     <div class="main-content">
       <header>
         <h2>
           <label for="nav-toggle">
             <span class="las la-bars"></span>
           </label>
-          Vehicle Management
+          Vehicle Insuarance
         </h2>
         <div class="search-wrapper">
           <span class="las la-search"></span>
@@ -106,68 +108,52 @@
                           {% endif %}
             </small>
           </div>
+        </div>
       </header>
       <main>
-        <div class="button">
-          <a href="{% url "vehiclemaintenance" %}">
-          <button>VEHICLE MAINTENANCE</button>
-        </a>
-        </div>
-        <br />
-        <div class="container2">
-          <table class="content-table"> 
-            <thead>        
-            <tr>
-              <th>VEHICLE</th>
-              <th>OWNER</th>
-              <th>EMAIL</th>
-              <th>TELEPHONE</th>
-              <th>INSUARANCE EXPIRY DATE</th>
-              <th>NEXT INSPECTION DATE</th>
-              <th>DISTANCE REMAINING</th>
-              <th>ODOMETER READING</th>
-              <th>STATUS</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% if objects %}
-            {% for item in objects %}
-            <tr>
-              <td>{{ item.vehicle.Plate_no }}</td>
-              <td>{{ item.vehicle.owner }}</td>
-              <td>{{ item.vehicle.email }}</td>
-              <td>{{ item.vehicle.telephone }}</td>
-              <td>{{ item.vehicle.Insuarance_expiry_date }}</td>
-              <td>{{ item.vehicle.next_inspection_date }}</td>
-              <td>{{ item.vehicle.Distance_remaining }}</td>
-              <td>{{ item.vehicle.odometer }}</td>
-              <td class="status">{{item.status}}</td>
-            </tr>
-            {% endfor %}
-            {% endif %}
-          </tbody>
-          </table>
-        </div>    
-        </div>
+        <div class="container">
+            <form action="vehicleinsuarance" method="post">
+              {% csrf_token %}
+                <div class="form first">
+                    <div class="details personal">
+                        <span class="title">Vehicle Insuarance details</span>
+                        <div class="fields">
+                          <div class="input-fields">
+                            <label>VEHICLE</label>
+                            <select required name="vehicle">
+                                <option disabled selected>Select vehicle</option>
+                                {%for vehicle in vehicles%}
+                                <option>{{ vehicle.Plate_no }}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+                          <div class="input-fields">
+                            <label>Insuarance Start Date</label>
+                            <input type="date" name="insuarance_date" placeholder="Enter insuarance date" required>
+                           </div>
+                            <div class="input-fields">
+                                <label>Insuarance Expiry Date</label>
+                                <input type="date" name="insuarance_expiry" placeholder="Enter insuarance expiry date" required>
+                            </div>
+                    </div>       
+                        <button class="sumbit">
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+        </form>
+    </div>
       </main>
     </div>
+    {% if message %}
     <script>
-      window.onload=myfunc()
-      function myfunc(){
-        const elements=document.querySelectorAll(".status");
-        elements.forEach(function(element){
-          if(element.innerHTML==="Good"){
-            element.style.backgroundColor="lightgreen";
-          }
-          else{
-            element.style.backgroundColor="darkred";
-          }
-          element.style.borderRadius = "15px"; 
-          element.style.color = "white";
-          element.style.margin = "5px";
-          element.style.display = "inline-block";
-        });
-      }
+      alert("{{message}}")
+      url="vehicleinsuarance"
+      window.location.href= url;
     </script>
+    {% endif %}
+    <script src="../static/script.js"></script>
   </body>
 </html>

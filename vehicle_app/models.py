@@ -37,7 +37,7 @@ class Vehicle(models.Model):
     last_service_distance = models.IntegerField()
     Distance_remaining = models.IntegerField(default=5000)
     odometer = models.IntegerField(default=0)
-    expected_efficiency=models.IntegerField()
+    expected_efficiency = models.IntegerField()
     def __str__(self):
         return self.Plate_no
 
@@ -50,6 +50,7 @@ class Journey(models.Model):
         validators=[MinValueValidator(0)])
     Stop_odometer_reading = models.IntegerField(
         validators=[MinValueValidator(0)])
+    Round_trip_distance = models.IntegerField(default=0)
     vehicle_condition = models.CharField(max_length=50)
     initial_JMP = models.TimeField()
     final_JMP = models.TimeField()
@@ -58,8 +59,9 @@ class Journey(models.Model):
     destination = models.CharField(max_length=300)
     Approver = models.ForeignKey(Aprover, on_delete=models.SET_NULL, null=True)
     passengers = models.CharField(max_length=254)
+
     class meta:
-        unique_together=['Date','Vehicle']
+        unique_together = ['Date', 'Vehicle']
 
     def __str__(self):
         return str(self.Date) + " " + str(self.Vehicle)
@@ -73,6 +75,7 @@ class Fuel(models.Model):
     total_distance_from_previous_fueling = models.IntegerField()
     Liters_taken = models.IntegerField()
     cost = models.IntegerField()
+    receipt = models.ImageField()
     effiency = models.IntegerField()
     variation = models.IntegerField()
 
@@ -85,7 +88,7 @@ class Tracking(models.Model):
     Driver = models.ForeignKey(Driver, on_delete=models.CASCADE)
     Date = models.DateField()
     Daily_vehicle_tracking_distance = models.IntegerField()
-    Overspeeding = models.CharField(max_length=200)
+    Overspeeding = models.IntegerField()
     JMP_daily_distance = models.IntegerField()
 
     def __str__(self):

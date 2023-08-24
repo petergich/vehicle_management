@@ -15,8 +15,7 @@
     <div class="sidebar">
       <div class="sidebar-brand">
         <h2>
-          <span class="las la-chart-bar"></span
-          ><span>TECHMINDS VMS</span>
+          <img src="../static/Techminds-logo.png">
         </h2>
       </div>
       <div class="sidebar-menu">
@@ -73,6 +72,13 @@
                 >
               </li> 
         </ul>
+        <ul class="bottom-menu">
+          <li>
+              <a href="{% url 'logout' %}"
+                  ><span class="las la-sign-out-alt"></span><span>Logout</span></a
+              >
+          </li>
+      </ul>
       </div>
     </div>
    
@@ -91,8 +97,16 @@
         <div class="user=wrapper">
           <span class="las la-user"></span>
           <div>
-            <h4>John Doe</h4>
-            <small>Super admin</small>
+            <h4>{{ request.user.username }}</h4>
+            <small>
+              {% if request.user.is_superuser %}
+                  Super admin
+                  {% elif request.user.is_staff %}
+                      Staff
+                      {% else %}
+                          Regular User
+                          {% endif %}
+            </small>
           </div>
         </div>
       </header>

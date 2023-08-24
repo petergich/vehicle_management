@@ -85,7 +85,7 @@
           <label for="nav-toggle">
             <span class="las la-bars"></span>
           </label>
-          Dashboard
+          Tracking Reports
         </h2>
         <div class="search-wrapper">
           <span class="las la-search"></span>
@@ -108,98 +108,37 @@
         </div>
       </header>
       <main>
-        <div class="cards">
-          <div class="card-single">
-            <div>
-              <span><a href="{% url 'trackingreports' %}">Tracking Reports</a></span>
-            </div>
-            <div>
-              <span class="las la-car-side"></span>
-            </div>
-          </div>
-          <div class="card-single">
-            <div>
-              <span><a href="{% url 'fuelingreport' %}">Fueling Reports</a></span>
-            </div>
-            <div>
-              <span class="las la-gas-pump"></span>
-            </div>
-          </div>
-          <div class="card-single">
-            <div>
-              <span><a href="{% url 'jmpreports' %}">Journey Management Plan Reports</a></span>
-            </div>
-            <div>
-              <span class="las la-file"></span>
-            </div>
-          </div>
+        <div class="container">
+          <h2>Monthly Tracking Report</h2>
+            <form action="trackingreports" method="post">
+              {% csrf_token %}
+              <div class="fields">
+              <div class="input-fields">
+                <label>SELECT MONTH</label>
+                <select name="month" required>
+                  <option disabled selected>Select Month</option>
+                  <option>January</option>
+                  <option>February</option>
+                  <option>March</option>
+                  <option>April</option>
+                  <option>May</option>
+                  <option>June</option>
+                  <option>July</option>
+                  <option>August</option>
+                  <option>September</option>
+                  <option>October</option>
+                  <option>November</option>
+                  <option>December</option>
+                </select>
+              </div>
+              <div class="input-fields">
+                <label>SELECT YEAR</label>
+                <input type="number" name="year" required placeholder="Enter Year">
+                <button type="submit">Generate Report</button>
+              </div>
+            </form>
         </div>
-        <br />
-        <div class="charts">
-          <div class="chart">
-            <h2>Recent Overspeeding Incidents</h2>
-            <canvas id="lineChart"></canvas>
-          </div>
-          <div class="chart" id="doughnut-chart">
-            <h2>Recent Fueling</h2>
-            <canvas id="doughnut"></canvas>
-          </div>
-        </div>    
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.1.2/dist/chart.umd.min.js"></script>
-        <script>
-          var ctx = document.getElementById('lineChart').getContext('2d');
-          var myChart = new Chart(ctx, {
-              type: 'line',
-              data: {
-                  labels: {{ labels|safe }},
-                  datasets: [{
-                      label: 'Overspeeding Incidents',
-                      data: {{ data|safe }},
-                      backgroundColor: [
-                          'rgba(85, 85, 85, 1)'
-                      ],
-                      borderColor: [
-                          'rgb(41, 155, 99)'
-                          
-                      ],
-                      borderWidth: 1
-                  }]
-              },
-              options: {
-                  responsive:true
-              }
-          });
-        </script>
-        <script>
-          var ctx = document.getElementById('doughnut').getContext('2d');
-          var myChart = new Chart(ctx, {
-              type: 'doughnut',
-              data: {
-                  labels: {{ lbls|safe}},
-                  datasets: [{
-                      label: 'Liters',
-                      data: {{ dt|safe }},
-                      backgroundColor: [
-                          'rgba(41, 155, 99, 1)',
-                          'rgba(54, 162, 235, 1)',
-                          'rgba(255, 206, 86, 1)',
-                          'rgba(120,46,139,1)'
-                          
-                      ],
-                      borderColor: [
-                          'rgba(41, 155, 99, 1)',
-                          'rgba(54, 162, 235, 1)',
-                          'rgba(255, 206, 86, 1)',
-                          'rgba(120,46,139,1)'
-                      ],
-                      borderWidth: 1
-                  }]
-              },
-              options: {
-                responsive: true
-              }
-          });
-        </script>
-      </main>
+      </div>
+  </main>
   </body>
 </html>
